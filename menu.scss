@@ -15,8 +15,48 @@ $hf-delay-enter:  .3s !default;
 $hf-delay-exit:   .8s !default;
 $hf-delay-side:   .1s !default;
 
-$hf-corner: $base-corner !default;
+$hf-corner: 8px !default;
 $hf-radius: 0 0 $hf-corner $hf-corner  !default;
+
+
+
+/* Mixin for linear gradients. Usage:
+	@include linear-gradient(#222, #111);
+*/
+@mixin linear-gradient($value...) {
+	background-image: -webkit-linear-gradient($value);
+	background-image:    -moz-linear-gradient($value);
+	background-image:      -o-linear-gradient($value);
+	background-image:         linear-gradient($value);
+}
+
+/* Mixin for box shadow. Usage:
+	@include box-shadow(0 0 10px #000);
+*/
+@mixin box-shadow($value) {
+	-webkit-box-shadow: $value;
+	        box-shadow: $value;
+}
+
+/* Mixin for box sizing. Usage:
+	@include box-sizing(border-box);
+*/
+@mixin box-sizing($value) {
+	-webkit-box-sizing: $value;
+	   -moz-box-sizing: $value;
+	        box-sizing: $value;
+}
+
+/* Mixin for transitions. Usage:
+	@include transition(all .4s ease-in-out .8s);
+*/
+@mixin transition($value...) {
+	-webkit-transition: $value;
+	   -moz-transition: $value;
+	     -o-transition: $value;
+	        transition: $value;
+}
+
 
 /* Placeholder Selectors (for custom styling) */
 

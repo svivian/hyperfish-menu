@@ -1,0 +1,145 @@
+/*-------------------------*\
+|	HYPERFISH MENU
+\*-------------------------*/
+/* Variables */
+/* Mixin for linear gradients. Usage:
+	@include linear-gradient(#222, #111);
+*/
+/* Mixin for box shadow. Usage:
+	@include box-shadow(0 0 10px #000);
+*/
+/* Mixin for box sizing. Usage:
+	@include box-sizing(border-box);
+*/
+/* Mixin for transitions. Usage:
+	@include transition(all .4s ease-in-out .8s);
+*/
+/* Placeholder Selectors (for custom styling) */
+.main-menu-list {
+  /* ul */
+  background-image: -webkit-linear-gradient(#525252, #404040);
+  background-image: -moz-linear-gradient(#525252, #404040);
+  background-image: -o-linear-gradient(#525252, #404040);
+  background-image: linear-gradient(#525252, #404040);
+  border: 1px solid #000;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+}
+
+.main-menu-list > li {
+  /* ul>li */
+  background-color: transparent;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  border-right: 1px solid #000;
+  color: #eee;
+  text-shadow: 1px 1px 1px #000;
+  font-weight: bold;
+  text-align: center;
+}
+.main-menu-list > li:first-child {
+  border-bottom-left-radius: 8px;
+}
+.main-menu-list > li:last-child {
+  border-right: 0;
+  border-bottom-right-radius: 8px;
+}
+
+.main-menu-list > li > ul {
+  /* ul>li>ul */
+  background: #000;
+}
+
+.main-menu-list > li > ul > li {
+  /* ul>li>ul>li */
+  font-weight: normal;
+  font-size: .9em;
+  text-align: left;
+  /* submenu list item transition */
+  -webkit-transition: background-color 0.1s ease-in-out;
+  -moz-transition: background-color 0.1s ease-in-out;
+  -o-transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
+}
+.main-menu-list > li > ul > li > a {
+  display: block;
+  padding: 0 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.main-menu-list > li > ul > li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-menu-list {
+  width: 1120px;
+  height: 36px;
+  margin: 0 auto;
+  padding: 0;
+}
+.main-menu-list:hover > li {
+  /* transition out for sibling menus when moving sideways */
+  -webkit-transition: background-color 0.3s ease-in-out 0.1s;
+  -moz-transition: background-color 0.3s ease-in-out 0.1s;
+  -o-transition: background-color 0.3s ease-in-out 0.1s;
+  transition: background-color 0.3s ease-in-out 0.1s;
+}
+.main-menu-list:hover > li > ul {
+  -webkit-transition: opacity 0.3s ease-in-out 0.1s, visibility 0.3s ease-in-out 0.1s;
+  -moz-transition: opacity 0.3s ease-in-out 0.1s, visibility 0.3s ease-in-out 0.1s;
+  -o-transition: opacity 0.3s ease-in-out 0.1s, visibility 0.3s ease-in-out 0.1s;
+  transition: opacity 0.3s ease-in-out 0.1s, visibility 0.3s ease-in-out 0.1s;
+}
+.main-menu-list > li {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  float: left;
+  width: 203px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  /* top item transition out */
+  -webkit-transition: background-color 0.3s ease-in-out 0.8s;
+  -moz-transition: background-color 0.3s ease-in-out 0.8s;
+  -o-transition: background-color 0.3s ease-in-out 0.8s;
+  transition: background-color 0.3s ease-in-out 0.8s;
+}
+.main-menu-list > li:hover {
+  background-color: rgba(50, 50, 50, 0.6);
+  /* top item transition in */
+  -webkit-transition: background-color 0.3s ease-in-out 0.3s;
+  -moz-transition: background-color 0.3s ease-in-out 0.3s;
+  -o-transition: background-color 0.3s ease-in-out 0.3s;
+  transition: background-color 0.3s ease-in-out 0.3s;
+}
+.main-menu-list > li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  /* submenu transition in */
+  -webkit-transition: opacity 0.3s ease-in-out 0.3s, visibility 0.3s ease-in-out 0.3s;
+  -moz-transition: opacity 0.3s ease-in-out 0.3s, visibility 0.3s ease-in-out 0.3s;
+  -o-transition: opacity 0.3s ease-in-out 0.3s, visibility 0.3s ease-in-out 0.3s;
+  transition: opacity 0.3s ease-in-out 0.3s, visibility 0.3s ease-in-out 0.3s;
+}
+.main-menu-list > li > ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* submenu transition out */
+  -webkit-transition: opacity 0.3s ease-in-out 0.8s, visibility 0.3s ease-in-out 0.8s;
+  -moz-transition: opacity 0.3s ease-in-out 0.8s, visibility 0.3s ease-in-out 0.8s;
+  -o-transition: opacity 0.3s ease-in-out 0.8s, visibility 0.3s ease-in-out 0.8s;
+  transition: opacity 0.3s ease-in-out 0.8s, visibility 0.3s ease-in-out 0.8s;
+}
+.main-menu-list > li > ul > li {
+  list-style: none;
+  padding: 0;
+  line-height: 27px;
+}
