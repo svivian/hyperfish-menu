@@ -1,0 +1,78 @@
+
+/*-------------------------*\
+|	VARIABLES
+\*-------------------------*/
+
+/* Breakpoint sizes for media queries - minimum desktop (desk) and tablet (lap) widths.
+	In other words, mobile (palm) is everything below `$breakpoint-lap-begin`.
+*/
+
+$breakpoint-desk-begin: 1120px !default;
+$breakpoint-lap-begin:   736px !default;
+
+$breakpoint-lap-end:    $breakpoint-desk-begin - 1;
+$breakpoint-palm-end:   $breakpoint-lap-begin  - 1;
+
+
+
+
+/*-------------------------*\
+|	MIXINS
+\*-------------------------*/
+
+/* Generic mixin for vendor properties. Usage:
+	@include vendor(box-sizing, border-box);
+*/
+@mixin vendor($property, $value) {
+	-webkit-#{$property}: $value;
+	   -moz-#{$property}: $value;
+		-ms-#{$property}: $value;
+		 -o-#{$property}: $value;
+			#{$property}: $value;
+}
+
+/* Generic mixin for vendor functions. Usage:
+	@include vendor-func(background-image, linear-gradient(#000, #fff));
+*/
+@mixin vendor-func($property, $func) {
+	#{$property}: -webkit-#{$func};
+	#{$property}:    -moz-#{$func};
+	#{$property}:     -ms-#{$func};
+	#{$property}:      -o-#{$func};
+	#{$property}:         #{$func};
+}
+
+/* Mixin for linear gradients. Usage:
+	@include linear-gradient(#222, #111);
+*/
+@mixin linear-gradient($value...) {
+	background-image: -webkit-linear-gradient($value);
+	background-image:    -moz-linear-gradient($value);
+	background-image:      -o-linear-gradient($value);
+	background-image:         linear-gradient($value);
+}
+
+/* Mixin for box shadow. Usage:
+	@include box-shadow(0 0 10px #000);
+*/
+@mixin box-shadow($value) {
+	-webkit-box-shadow: $value;
+	        box-shadow: $value;
+}
+
+/* Mixin for box sizing. Usage:
+	@include box-sizing(border-box);
+*/
+@mixin box-sizing($value) {
+	-webkit-box-sizing: $value;
+	   -moz-box-sizing: $value;
+	        box-sizing: $value;
+}
+
+/* Mixin for transitions. Usage:
+	@include transition(all .4s ease-in-out .8s);
+*/
+@mixin transition($value...) {
+	-webkit-transition: $value;
+	        transition: $value;
+}
