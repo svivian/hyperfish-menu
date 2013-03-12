@@ -15,7 +15,7 @@ $hf-item-bw:      1px !default;
 /* Fade in/out duration */
 $hf-anim-length:  .2s !default;
 /* Delay, when moving mouse over menu, before menu opens */
-$hf-delay-enter:  .3s !default;
+$hf-delay-enter:  .4s !default;
 /* Delay, when moving mouse out of menu, before menu closes */
 $hf-delay-exit:   .8s !default;
 /* Delay when moving from one menu item to an adjacent item */
@@ -31,22 +31,25 @@ $breakpoint-palm-end:   735px !default;
 /*** HYPERFISH MAIN MENU CODE ************************************************/
 
 .hyperfish-list {
-	// @include box-sizing(border-box);
 	width: $hf-width;
 	height: $hf-height;
 	margin: 0 auto;
 	padding: 0;
 	@include hf-theme-1f-ul;
 
-	&:hover, &.immediate {
+	/* instant transition when moving sideways - targets case when not using JavaScript */
+	&:hover {
 		>li {
-			/* top item transition out */
-			@include transition(background-color $hf-anim-length ease-in-out $hf-delay-side);
+			>ul {
+				@include transition(opacity $hf-anim-length ease-in-out $hf-delay-side, visibility $hf-anim-length ease-in-out $hf-delay-side);
+			}
+		}
+	}
 
+	/* instant transition when moving sideways - targets case when using JavaScript to add `immediate` class */
+	&.immediate {
+		>li {
 			&:hover, &.hfHover {
-				/* top item transition in */
-				@include transition(background-color $hf-anim-length ease-in-out $hf-delay-side);
-
 				>ul {
 					/* submenu transition in */
 					@include transition(opacity $hf-anim-length ease-in-out $hf-delay-side, visibility $hf-anim-length ease-in-out $hf-delay-side);

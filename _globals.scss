@@ -64,7 +64,7 @@
 /*** THEME *******************************************************************/
 
 /* Note: transitions are added on the background-color of the top level menu items.
-	We use our timing variables to sync the background and submenu. */
+	We use our timing variables to sync the background changing colour and the submenu opening! */
 
 /* top level, <ul> element */
 @mixin hf-theme-1f-ul {
@@ -78,7 +78,16 @@
 		text-decoration: none;
 	}
 
-	&:hover, &.immediate {
+	/* instant transition when moving sideways - targets case when not using JavaScript */
+	&:hover {
+		>li {
+			/* transition out for sibling menus when moving sideways */
+			@include transition(background-color $hf-anim-length ease-in-out $hf-delay-side);
+		}
+	}
+
+	/* instant transition when moving sideways - targets case when using JavaScript to add `immediate` class */
+	&.immediate {
 		>li {
 			/* top item transition out */
 			@include transition(background-color $hf-anim-length ease-in-out $hf-delay-side);
@@ -101,12 +110,12 @@
 	font-weight: bold;
 	text-align: center;
 
-	/* top item transition out */
-	@include transition(background-color $hf-anim-length ease-in-out $hf-delay-exit);
-
 	&:last-child {
 		border-right: 0;
 	}
+
+	/* top item transition out */
+	@include transition(background-color $hf-anim-length ease-in-out $hf-delay-exit);
 
 	&:hover, &.hfHover {
 		background-color: rgba(0, 0, 0, .2);
