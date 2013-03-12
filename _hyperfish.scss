@@ -1,6 +1,34 @@
-/*-------------------------*\
-|	HYPERFISH MENU
-\*-------------------------*/
+
+/*** VARIABLES ***************************************************************/
+
+/* Menu dimensions */
+$hf-width:       100% !default;
+$hf-height:      36px !default;
+
+/* Number of top-level items in menu */
+$hf-items:        5   !default;
+
+/* Padding and border width helpers */
+$hf-item-pad:    10px !default;
+$hf-item-bw:      1px !default;
+
+/* Fade in/out duration */
+$hf-anim-length:  .2s !default;
+/* Delay, when moving mouse over menu, before menu opens */
+$hf-delay-enter:  .3s !default;
+/* Delay, when moving mouse out of menu, before menu closes */
+$hf-delay-exit:   .8s !default;
+/* Delay when moving from one menu item to an adjacent item */
+$hf-delay-side:   .1s !default;
+
+
+/* Breakpoint size for mobile (palm) media query - i.e. the maximum width
+	before switching to non-mobile layout. */
+$breakpoint-palm-end:   735px !default;
+
+
+
+/*** HYPERFISH MAIN MENU CODE ************************************************/
 
 .hyperfish-list {
 	// @include box-sizing(border-box);
@@ -80,9 +108,7 @@
 }
 
 
-/*-------------------------*\
-|	RESPONSIVE ADJUSTMENTS
-\*-------------------------*/
+/*** RESPONSIVE ADJUSTMENTS **************************************************/
 
 /* mobile */
 @media handheld, only screen and (max-width: $breakpoint-palm-end) {
