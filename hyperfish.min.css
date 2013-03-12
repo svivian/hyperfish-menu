@@ -1,16 +1,4 @@
-/* Override Hyperfish variables here, e.g.
-	$hf-items: 7;
-*/
-/* Import Hyperfish */
-/*-------------------------*\
-|	VARIABLES
-\*-------------------------*/
-/* Breakpoint sizes for media queries - minimum desktop (desk) and tablet (lap) widths.
-	In other words, mobile (palm) is everything below `$breakpoint-lap-begin`.
-*/
-/*-------------------------*\
-|	MIXINS
-\*-------------------------*/
+/*** CSS3 HELPERS ************************************************************/
 /* Generic mixin for vendor properties. Usage:
 	@include vendor(box-sizing, border-box);
 */
@@ -29,17 +17,68 @@
 /* Mixin for transitions. Usage:
 	@include transition(all .4s ease-in-out .8s);
 */
+/*** VARIABLES ***************************************************************/
+/* Menu dimensions */
+/* Number of top-level items in menu */
+/* Padding and border width helpers */
+/* Fade in/out duration */
+/* Delay, when moving mouse over menu, before menu opens */
+/* Delay, when moving mouse out of menu, before menu closes */
+/* Delay when moving from one menu item to an adjacent item */
+/* Breakpoint size for mobile (palm) media query - i.e. the maximum width
+	before switching to non-mobile layout. */
+/*** THEME *******************************************************************/
+/* Note: transitions are added on the background-color of the top level menu items.
+	We use our timing variables to sync the background and submenu. */
+/* top level, <ul> element */
+/* Top level, <li> elements: ul>li */
+/* Second level, <ul> element: ul>li>ul */
+/* Second level, <li> elements: ul>li>ul>li */
+/* Override Hyperfish variables and mixins here, e.g.
+
+		$hf-items: 7;
+
+		@mixin hf-theme-1f-ul {
+			background-color: #325595;
+			@include linear-gradient(#325595, #2a427e);
+			border: 1px solid #182d49;
+		}
+
+	Note: for mixins it's all or nothing. Any styles you omit from the default mixin will NOT be inherited here.
+*/
+/* Import Hyperfish */
 /*-------------------------*\
 |	HYPERFISH MENU
 \*-------------------------*/
-/* Variables */
 .hyperfish-list {
   width: 100%;
   height: 36px;
   margin: 0 auto;
   padding: 0;
+  background-color: #525252;
+  background-image: -webkit-linear-gradient(#646464, #525252);
+  background-image: -moz-linear-gradient(#646464, #525252);
+  background-image: -o-linear-gradient(#646464, #525252);
+  background-image: linear-gradient(#646464, #525252);
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+.hyperfish-list a {
+  color: #eee;
+  text-decoration: none;
 }
 .hyperfish-list:hover > li, .hyperfish-list.immediate > li {
+  /* top item transition out */
+  -webkit-transition: background-color 0.2s ease-in-out 0.1s;
+  transition: background-color 0.2s ease-in-out 0.1s;
+}
+.hyperfish-list:hover > li:hover, .hyperfish-list:hover > li.hfHover, .hyperfish-list.immediate > li:hover, .hyperfish-list.immediate > li.hfHover {
+  /* top item transition in */
+  -webkit-transition: background-color 0.2s ease-in-out 0.1s;
+  transition: background-color 0.2s ease-in-out 0.1s;
+}
+.hyperfish-list:hover > li, .hyperfish-list.immediate > li {
+  /* top item transition out */
   -webkit-transition: background-color 0.2s ease-in-out 0.1s;
   transition: background-color 0.2s ease-in-out 0.1s;
 }
@@ -71,12 +110,23 @@
   line-height: 36px;
   margin: 0;
   padding: 0 10px;
+  background-color: transparent;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  border-right: 1px solid #000;
+  color: #eee;
+  text-shadow: 1px 1px 1px #000;
+  font-weight: bold;
+  text-align: center;
   /* top item transition out */
   -webkit-transition: background-color 0.2s ease-in-out 0.8s;
   transition: background-color 0.2s ease-in-out 0.8s;
 }
+.hyperfish-list > li:last-child {
+  border-right: 0;
+}
 .hyperfish-list > li:hover, .hyperfish-list > li.hfHover {
-  background-color: rgba(50, 50, 50, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
   /* top item transition in */
   -webkit-transition: background-color 0.2s ease-in-out 0.3s;
   transition: background-color 0.2s ease-in-out 0.3s;
@@ -98,6 +148,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
+  background: #000;
   /* submenu transition out */
   -webkit-transition: opacity 0.2s ease-in-out 0.8s, visibility 0.2s ease-in-out 0.8s;
   transition: opacity 0.2s ease-in-out 0.8s, visibility 0.2s ease-in-out 0.8s;
@@ -106,46 +157,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-/* Placeholder Selectors (for custom styling) */
-.hyperfish-list {
-  /* ul */
-  background-color: #404040;
-  background-image: -webkit-linear-gradient(#646464, #525252);
-  background-image: -moz-linear-gradient(#646464, #525252);
-  background-image: -o-linear-gradient(#646464, #525252);
-  background-image: linear-gradient(#646464, #525252);
-  border: 1px solid #000;
-  border-radius: 8px;
-}
-.hyperfish-list a {
-  color: #eee;
-  text-decoration: none;
-}
-
-.hyperfish-list > li {
-  /* ul>li */
-  background-color: transparent;
-  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-  border-right: 1px solid #000;
-  color: #eee;
-  text-shadow: 1px 1px 1px #000;
-  font-weight: bold;
-  text-align: center;
-}
-.hyperfish-list > li:last-child {
-  border-right: 0;
-}
-
-.hyperfish-list > li > ul {
-  /* ul>li>ul */
-  background: #000;
-}
-
-.hyperfish-list > li > ul > li {
-  /* ul>li>ul>li */
   font-weight: normal;
   font-size: 12px;
   line-height: 1.5;
@@ -153,11 +164,6 @@
   /* submenu list item transition */
   -webkit-transition: background-color 0.1s ease-in-out;
   transition: background-color 0.1s ease-in-out;
-}
-@media (min-width: 736px) and (max-width: 1119px) {
-  .hyperfish-list > li > ul > li {
-    font-size: 11px;
-  }
 }
 @media handheld, only screen and (max-width: 735px) {
   .hyperfish-list > li > ul > li {
@@ -175,8 +181,6 @@
 /*-------------------------*\
 |	RESPONSIVE ADJUSTMENTS
 \*-------------------------*/
-/* tablet */
-/* mobile and tablet */
 /* mobile */
 @media handheld, only screen and (max-width: 735px) {
   .hyperfish-list, .hyperfish-list > li {
@@ -194,9 +198,4 @@
     position: static;
   }
 }
-/* Override placeholder selectors here, e.g.
-	%hf-theme-1f-ul {
-		@include linear-gradient(#999999, #808080);
-	}
-*/
 /* Import or write the rest of your styles below */

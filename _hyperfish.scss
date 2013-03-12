@@ -2,30 +2,17 @@
 |	HYPERFISH MENU
 \*-------------------------*/
 
-/* Variables */
-
-$hf-width:       100% !default;
-$hf-height:      36px !default;
-$hf-items:        5   !default;
-
-$hf-item-pad:    10px !default;
-$hf-item-bw:      1px !default;
-
-$hf-anim-length:  .2s !default;
-$hf-delay-enter:  .3s !default;
-$hf-delay-exit:   .8s !default;
-$hf-delay-side:   .1s !default;
-
 .hyperfish-list {
 	// @include box-sizing(border-box);
 	width: $hf-width;
 	height: $hf-height;
 	margin: 0 auto;
 	padding: 0;
-	@extend %hf-theme-1f-ul !optional;
+	@include hf-theme-1f-ul;
 
 	&:hover, &.immediate {
 		>li {
+			/* top item transition out */
 			@include transition(background-color $hf-anim-length ease-in-out $hf-delay-side);
 
 			&:hover, &.hfHover {
@@ -55,16 +42,9 @@ $hf-delay-side:   .1s !default;
 		line-height: $hf-height;
 		margin: 0;
 		padding: 0 $hf-item-pad;
-		@extend %hf-theme-1f-li !optional;
-
-		/* top item transition out */
-		@include transition(background-color $hf-anim-length ease-in-out $hf-delay-exit);
+		@include hf-theme-1f-li;
 
 		&:hover, &.hfHover {
-			background-color: rgba(50, 50, 50, .6);
-			/* top item transition in */
-			@include transition(background-color $hf-anim-length ease-in-out $hf-delay-enter);
-
 			>ul {
 				visibility: visible;
 				opacity: 1;
@@ -83,7 +63,7 @@ $hf-delay-side:   .1s !default;
 			width: 100%;
 			margin: 0;
 			padding: 0;
-			@extend %hf-theme-2f-ul !optional;
+			@include hf-theme-2f-ul;
 
 			/* submenu transition out */
 			@include transition(opacity $hf-anim-length ease-in-out $hf-delay-exit, visibility $hf-anim-length ease-in-out $hf-delay-exit);
@@ -92,7 +72,7 @@ $hf-delay-side:   .1s !default;
 				margin: 0;
 				padding: 0;
 				list-style: none;
-				@extend %hf-theme-2f-li !optional;
+				@include hf-theme-2f-li;
 
 			}
 		}
@@ -100,81 +80,9 @@ $hf-delay-side:   .1s !default;
 }
 
 
-
-/* Placeholder Selectors (for custom styling) */
-
-%hf-theme-1f-ul {
-	/* ul */
-	background-color: #404040;
-	@include linear-gradient(#646464, #525252);
-	border: 1px solid #000;
-	border-radius: 8px;
-
-	a {
-		color: #eee;
-		text-decoration: none;
-	}
-}
-%hf-theme-1f-li {
-	/* ul>li */
-	background-color: transparent;
-	@include box-shadow(inset 1px 1px 0 rgba(255, 255, 255, .1));
-	border-right: 1px solid #000;
-	color: #eee;
-	text-shadow: 1px 1px 1px #000;
-	font-weight: bold;
-	text-align: center;
-
-	&:last-child {
-		border-right: 0;
-	}
-}
-%hf-theme-2f-ul {
-	/* ul>li>ul */
-	background: #000;
-}
-%hf-theme-2f-li {
-	/* ul>li>ul>li */
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 1.5;
-	text-align: left;
-
-	@media (min-width: $breakpoint-lap-begin) and (max-width: $breakpoint-lap-end) {
-		font-size: 11px;
-	}
-	@media handheld, only screen and (max-width: $breakpoint-palm-end) {
-		font-size: 15px;
-	}
-
-	/* submenu list item transition */
-	@include transition(background-color .1s ease-in-out);
-
-	>a {
-		display: block;
-		padding: 4px 8px;
-	}
-
-	&:hover {
-		background-color: rgba(255, 255, 255, .2);
-	}
-}
-
-
-
-
-
 /*-------------------------*\
 |	RESPONSIVE ADJUSTMENTS
 \*-------------------------*/
-
-/* tablet */
-@media (min-width: $breakpoint-lap-begin) and (max-width: $breakpoint-lap-end) {
-}
-
-/* mobile and tablet */
-@media (max-width: $breakpoint-lap-end) {
-}
 
 /* mobile */
 @media handheld, only screen and (max-width: $breakpoint-palm-end) {

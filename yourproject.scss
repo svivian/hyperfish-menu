@@ -1,22 +1,29 @@
 
-/* Override Hyperfish variables here, e.g.
-	$hf-items: 7;
+@import "globals";
+
+
+/* Override Hyperfish variables and mixins here, e.g.
+
+		$hf-items: 7;
+
+		@mixin hf-theme-1f-ul {
+			background-color: #325595;
+			@include linear-gradient(#325595, #2a427e);
+			border: 1px solid #182d49;
+		}
+
+	Note: for mixins it's all or nothing. Any styles you omit from the default mixin will NOT be inherited here.
 */
+
+
 
 
 
 /* Import Hyperfish */
-@import "globals";
 @import "hyperfish";
-
-
-/* Override placeholder selectors here, e.g.
-	%hf-theme-1f-ul {
-		@include linear-gradient(#999999, #808080);
-	}
-*/
 
 
 
 /* Import or write the rest of your styles below */
+
 
